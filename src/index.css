@@ -9,10 +9,16 @@
   --muted: #7d8fa1;
   --mono: 'Space Mono', monospace;
   --sans: 'Syne', sans-serif;
+
+  --page-max: 1080px;
+  --page-pad-x: clamp(1rem, 5vw, 2.25rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   background: var(--bg);
@@ -20,6 +26,11 @@ body {
   font-family: var(--sans);
   overflow-x: hidden;
   cursor: auto;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 body::before {

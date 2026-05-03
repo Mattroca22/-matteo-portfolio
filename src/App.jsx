@@ -92,30 +92,32 @@ export default function App() {
     <>
       {/* NAV */}
       <nav className="nav">
-        <div className="nav-logo">MRC<span className="blink">_</span></div>
+        <div className="nav-inner">
+          <div className="nav-logo">MRC<span className="blink">_</span></div>
 
-        {/* Desktop links */}
-        <ul className="nav-links desktop-only">
-          {t.navLinks.map((l, i) => (
-            <li key={i}><a href={`#${['pitch','skills','experience','projects','contact'][i]}`} onClick={() => setMenuOpen(false)}>{l}</a></li>
-          ))}
-          <li className="lang-sw">
-            <button className={lang === 'en' ? 'active' : ''} onClick={() => switchLang('en')}>EN</button>
-            <button className={lang === 'es' ? 'active' : ''} onClick={() => switchLang('es')}>ES</button>
-          </li>
-        </ul>
+          {/* Desktop links */}
+          <ul className="nav-links desktop-only">
+            {t.navLinks.map((l, i) => (
+              <li key={i}><a href={`#${['pitch','skills','experience','projects','contact'][i]}`} onClick={() => setMenuOpen(false)}>{l}</a></li>
+            ))}
+            <li className="lang-sw">
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => switchLang('en')}>EN</button>
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => switchLang('es')}>ES</button>
+            </li>
+          </ul>
 
-        {/* Mobile: lang + hamburger */}
-        <div className="mobile-nav-right">
-          <div className="lang-sw">
-            <button className={lang === 'en' ? 'active' : ''} onClick={() => switchLang('en')}>EN</button>
-            <button className={lang === 'es' ? 'active' : ''} onClick={() => switchLang('es')}>ES</button>
+          {/* Mobile: lang + hamburger */}
+          <div className="mobile-nav-right">
+            <div className="lang-sw">
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => switchLang('en')}>EN</button>
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => switchLang('es')}>ES</button>
+            </div>
+            <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+              <span className={menuOpen ? 'open' : ''} />
+              <span className={menuOpen ? 'open' : ''} />
+              <span className={menuOpen ? 'open' : ''} />
+            </button>
           </div>
-          <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
-            <span className={menuOpen ? 'open' : ''} />
-            <span className={menuOpen ? 'open' : ''} />
-            <span className={menuOpen ? 'open' : ''} />
-          </button>
         </div>
       </nav>
 
