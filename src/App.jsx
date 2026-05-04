@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import TopPricesBarChart from './components/TopPricesBarChart'
 import { content } from './content'
 import './App.css'
 
 const CONTACT_EMAIL = 'matt.roca22@gmail.com'
+
+const SECTION_IDS = ['pitch', 'skills', 'experience', 'projects', 'data-viz', 'contact']
 
 function renderBullet(text) {
   return text.split(/<hl>(.*?)<\/hl>/).map((part, i) =>
@@ -98,7 +101,7 @@ export default function App() {
           {/* Desktop links */}
           <ul className="nav-links desktop-only">
             {t.navLinks.map((l, i) => (
-              <li key={i}><a href={`#${['pitch','skills','experience','projects','contact'][i]}`} onClick={() => setMenuOpen(false)}>{l}</a></li>
+              <li key={i}><a href={`#${SECTION_IDS[i]}`} onClick={() => setMenuOpen(false)}>{l}</a></li>
             ))}
             <li className="lang-sw">
               <button className={lang === 'en' ? 'active' : ''} onClick={() => switchLang('en')}>EN</button>
@@ -124,7 +127,7 @@ export default function App() {
       {/* Mobile dropdown menu */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         {t.navLinks.map((l, i) => (
-          <a key={i} href={`#${['pitch','skills','experience','projects','contact'][i]}`} onClick={() => setMenuOpen(false)}>{l}</a>
+          <a key={i} href={`#${SECTION_IDS[i]}`} onClick={() => setMenuOpen(false)}>{l}</a>
         ))}
       </div>
 
@@ -230,6 +233,20 @@ export default function App() {
               <div className="pimp">{p.impact}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* OPEN DATA — PRICE CHART */}
+      <section id="data-viz" className="section-alt">
+        <div className="section-tag">{t.vizTag}</div>
+        <h2 className="section-title">{t.vizTitle}</h2>
+        <div className="fade-in">
+          <TopPricesBarChart
+            ariaLabel={t.vizTitle}
+            caption={t.vizCaption}
+            metaLeft={t.vizMetaLeft}
+            metaRight={t.vizMetaRight}
+          />
         </div>
       </section>
 

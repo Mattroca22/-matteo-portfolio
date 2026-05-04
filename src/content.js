@@ -1,6 +1,6 @@
 export const content = {
   en: {
-    navLinks: ['Pitch', 'Skills', 'Experience', 'Projects', 'Contact'],
+    navLinks: ['Pitch', 'Skills', 'Experience', 'Projects', 'Open data', 'Contact'],
     heroTag: 'Data Analyst · Data Engineer · Full Stack Developer',
     heroDesc: 'Transforming complex data into decisions that drive real impact. Specialized in health analytics, ETL pipelines, and full stack development for operations and clinical environments.',
     cta1: 'Get in Touch', cta2: 'View Projects',
@@ -16,6 +16,12 @@ export const content = {
     s1tag: '// 01 — Capabilities', s1title: 'Technical Stack',
     s2tag: '// 02 — Track Record', s2title: 'Experience',
     s3tag: '// 03 — Built Things', s3title: 'Projects',
+    vizTag: '// Live — Portfolio viz',
+    vizTitle: 'Top 10 products by average price',
+    vizCaption:
+      'Bar chart from public JSON (Datos Abiertos Colombia · canasta familiar pipeline). Axes: Producto vs precio_promedio in COP.',
+    vizMetaLeft: 'Sorted by precio_promedio · descending',
+    vizMetaRight: 'Recharts · ResponsiveContainer',
     s4tag: '// 04 — Contact', s4title: "Let's Talk",
     avail: 'Available for freelance projects',
     contactDesc: "Need a data analyst, engineer, or developer who understands the business side too? Let's build something that actually moves the needle.",
@@ -47,7 +53,7 @@ export const content = {
     footer1: '© 2025 Matteo Rodriguez Carmona', footer2: 'Data Analyst · Data Engineer · Full Stack Dev',
   },
   es: {
-    navLinks: ['Pitch', 'Habilidades', 'Experiencia', 'Proyectos', 'Contacto'],
+    navLinks: ['Pitch', 'Habilidades', 'Experiencia', 'Proyectos', 'Datos abiertos', 'Contacto'],
     heroTag: 'Analista de Datos · Data Engineer · Full Stack Developer',
     heroDesc: 'Transformo datos complejos en decisiones que generan impacto real. Especializado en analítica de salud, pipelines ETL y desarrollo full stack para entornos operativos y clínicos.',
     cta1: 'Contáctame', cta2: 'Ver Proyectos',
@@ -63,6 +69,12 @@ export const content = {
     s1tag: '// 01 — Capacidades', s1title: 'Stack Técnico',
     s2tag: '// 02 — Trayectoria', s2title: 'Experiencia',
     s3tag: '// 03 — Lo que he construido', s3title: 'Proyectos',
+    vizTag: '// Live — Visualización',
+    vizTitle: 'Top 10 productos por precio promedio',
+    vizCaption:
+      'Gráfico desde JSON público (pipeline canasta familiar · Datos Abiertos Colombia). Ejes: Producto vs precio_promedio en COP.',
+    vizMetaLeft: 'Ordenado por precio_promedio · descendente',
+    vizMetaRight: 'Recharts · ResponsiveContainer',
     s4tag: '// 04 — Contacto', s4title: 'Hablemos',
     avail: 'Disponible para proyectos freelance',
     contactDesc: '¿Necesitas un analista, ingeniero de datos o desarrollador que entienda el negocio? Construyamos algo que realmente marque la diferencia.',
