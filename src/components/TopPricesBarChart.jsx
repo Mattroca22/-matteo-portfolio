@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
 import {
   Bar,
   BarChart,
@@ -61,7 +61,10 @@ export default function TopPricesBarChart({
   metaLeft,
   metaRight,
   ariaLabel = 'Top products by average price',
+  embedded = false,
+  showMeta = true,
 }) {
+  const gradId = `topPricesBarFill-${useId().replace(/:/g, '')}`
   const [rows, setRows] = useState(null)
   const [error, setError] = useState(null)
 
@@ -107,9 +110,11 @@ export default function TopPricesBarChart({
 
   const showChart = chartData.length > 0 && !error
 
+  const rootClass = ['top-prices', embedded ? 'top-prices--embedded' : ''].filter(Boolean).join(' ')
+
   return (
-    <div className="top-prices" role="region" aria-label={ariaLabel}>
-      {(title || caption) ? (
+    <div className={rootClass} role="region" aria-label={ariaLabel}>
+      {!embedded && (title || caption) ? (
         <div className="top-prices__header">
           {title ? <h3 className="top-prices__title">{title}</h3> : null}
           {caption ? <p className="top-prices__caption">{caption}</p> : null}
@@ -117,13 +122,15 @@ export default function TopPricesBarChart({
       ) : null}
 
       {error ? (
-        <div className="top-prices__state top-prices__state--error">
+        <div className={`top-prices__state top-prices__state--error${embedded ? ' top-prices__state--embedded' : ''}`}>
           Could not load price data. Ensure <code>public/data_prices.json</code> exists and the dev server is running.
         </div>
       ) : rows === null ? (
-        <div className="top-prices__state">Loading chart data…</div>
+        <div className={`top-prices__state${embedded ? ' top-prices__state--embedded' : ''}`}>Loading chart data…</div>
       ) : chartData.length === 0 ? (
-        <div className="top-prices__state">No numeric price rows found. Regenerate the JSON with the Python script.</div>
+        <div className={`top-prices__state${embedded ? ' top-prices__state--embedded' : ''}`}>
+          No numeric price rows found. Regenerate the JSON with the Python script.
+        </div>
       ) : null}
 
       {showChart ? (
@@ -132,10 +139,14 @@ export default function TopPricesBarChart({
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={chartData}
-                margin={{ top: 8, right: 8, left: 4, bottom: 4 }}
+                margin={
+                  embedded
+                    ? { top: 4, right: 2, left: 0, bottom: 2 }
+                    : { top: 8, right: 8, left: 4, bottom: 4 }
+                }
               >
                 <defs>
-                  <linearGradient id="topPricesBarFill" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#00d4aa" stopOpacity={0.95} />
                     <stop offset="100%" stopColor="#0099ff" stopOpacity={0.55} />
                   </linearGradient>
@@ -144,35 +155,39 @@ export default function TopPricesBarChart({
                 <XAxis
                   dataKey="Producto"
                   type="category"
-                  tick={{ fill: 'var(--muted)', fontSize: 11, fontFamily: 'var(--mono)' }}
+                  tick={{ fill: 'var(--muted)', fontSize: embedded ? 9 : 11, fontFamily: 'var(--mono)' }}
                   tickLine={false}
                   axisLine={{ stroke: 'var(--border)' }}
                   interval={0}
-                  angle={-32}
+                  angle={embedded ? -28 : -32}
                   textAnchor="end"
-                  height={110}
+                  height={embedded ? 72 : 110}
                 >
-                  <Label
-                    value="Producto"
-                    offset={8}
-                    position="insideBottom"
-                    style={{ fill: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: 11 }}
-                  />
+                  {!embedded ? (
+                    <Label
+                      value="Producto"
+                      offset={8}
+                      position="insideBottom"
+                      style={{ fill: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: 11 }}
+                    />
+                  ) : null}
                 </XAxis>
                 <YAxis
                   dataKey="precio_promedio"
-                  tick={{ fill: 'var(--muted)', fontSize: 11, fontFamily: 'var(--mono)' }}
+                  tick={{ fill: 'var(--muted)', fontSize: embedded ? 9 : 11, fontFamily: 'var(--mono)' }}
                   tickLine={false}
                   axisLine={{ stroke: 'var(--border)' }}
                   tickFormatter={(v) => COP_COMPACT.format(Number(v))}
-                  width={72}
+                  width={embedded ? 56 : 72}
                 >
-                  <Label
-                    value="precio_promedio"
-                    angle={-90}
-                    position="insideLeft"
-                    style={{ fill: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: 11 }}
-                  />
+                  {!embedded ? (
+                    <Label
+                      value="precio_promedio"
+                      angle={-90}
+                      position="insideLeft"
+                      style={{ fill: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: 11 }}
+                    />
+                  ) : null}
                 </YAxis>
                 <Tooltip
                   cursor={{ fill: 'rgba(0, 212, 170, 0.06)' }}
@@ -180,17 +195,19 @@ export default function TopPricesBarChart({
                 />
                 <Bar
                   dataKey="precio_promedio"
-                  fill="url(#topPricesBarFill)"
+                  fill={`url(#${gradId})`}
                   radius={[6, 6, 0, 0]}
-                  maxBarSize={52}
+                  maxBarSize={embedded ? 40 : 52}
                 />
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="top-prices__meta">
-            <span>{metaLeft}</span>
-            <span>{metaRight}</span>
-          </div>
+          {showMeta ? (
+            <div className="top-prices__meta">
+              <span>{metaLeft}</span>
+              <span>{metaRight}</span>
+            </div>
+          ) : null}
         </>
       ) : null}
     </div>

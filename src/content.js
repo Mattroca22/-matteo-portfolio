@@ -1,6 +1,6 @@
 export const content = {
   en: {
-    navLinks: ['Pitch', 'Skills', 'Experience', 'Projects', 'Open data', 'Contact'],
+    navLinks: ['Pitch', 'Skills', 'Experience', 'Projects', 'Contact'],
     heroTag: 'Data Analyst · Data Engineer · Full Stack Developer',
     heroDesc: 'Transforming complex data into decisions that drive real impact. Specialized in health analytics, ETL pipelines, and full stack development for operations and clinical environments.',
     cta1: 'Get in Touch', cta2: 'View Projects',
@@ -16,12 +16,25 @@ export const content = {
     s1tag: '// 01 — Capabilities', s1title: 'Technical Stack',
     s2tag: '// 02 — Track Record', s2title: 'Experience',
     s3tag: '// 03 — Built Things', s3title: 'Projects',
-    vizTag: '// Live — Portfolio viz',
     vizTitle: 'Top 10 products by average price',
-    vizCaption:
-      'Bar chart from public JSON (Datos Abiertos Colombia · canasta familiar pipeline). Axes: Producto vs precio_promedio in COP.',
+    projectVizOrg: 'Python · Pandas · Recharts · datos.gov.co',
+    projectVizSummary:
+      'Exploring Colombia open data with a small Python → JSON pipeline and an interactive bar chart in React.',
+    projectVizDetail: `This write-up walks through a reproducible workflow: pulling the latest rows from Datos Abiertos Colombia (Socrata), shaping price fields with Pandas, exporting a static JSON artifact for the web, and visualizing the Top 10 highest average prices by Producto.
+
+The goal is to mirror how I communicate analytical work in production: clear sourcing, explicit transformations, and a chart people can read without guessing the axes or units.
+
+All values are shown in COP; the figure updates whenever you regenerate public/data_prices.json.`,
+    projectVizImpact: 'Live JSON · Top 10 · sorted by precio_promedio',
+    projectChartCaption:
+      'Bars rank products by mean precio_promedio on the pulled slice; tooltip shows the formatted COP average.',
     vizMetaLeft: 'Sorted by precio_promedio · descending',
     vizMetaRight: 'Recharts · ResponsiveContainer',
+    publicationOpen: 'Open publication',
+    publicationClose: 'Close',
+    carouselPrev: 'Previous',
+    carouselNext: 'Next',
+    carouselDotGoTo: 'Go to slide',
     s4tag: '// 04 — Contact', s4title: "Let's Talk",
     avail: 'Available for freelance projects',
     contactDesc: "Need a data analyst, engineer, or developer who understands the business side too? Let's build something that actually moves the needle.",
@@ -45,15 +58,81 @@ export const content = {
         bullets: ['Analyzed epidemiological and hospital data to support <hl>strategic institutional decision-making</hl>.','Designed automated Power BI reports achieving <hl>30% reduction in processing time</hl>.','Managed public health databases and regulatory reports submitted to the Ministry of Health.'] },
     ],
     projects: [
-      { num: '01 / 2023', title: 'Antimicrobial Stewardship Program (PROA)', org: 'Hospital Alma Mater de Antioquia',
-        desc: 'Custom web module for the infectology department integrating antibiotic dispensing control and bacterial resistance surveillance.', impact: '↓ 12% Reduction in Defined Daily Doses (DDD)' },
-      { num: '02 / 2021', title: 'Infrastructure Warehouse Supply Control', org: 'Hospital Alma Mater de Antioquia',
-        desc: 'Administrative module automating tracking of entries and exits, optimizing stock levels and reducing asset losses.', impact: '↓ 45% Reduction in Asset Losses' },
+      {
+        slug: 'proa',
+        num: '01 / 2023',
+        title: 'Antimicrobial Stewardship Program (PROA)',
+        org: 'Hospital Alma Mater de Antioquia',
+        tech: 'React · JavaScript · SQL · Clinical integrations',
+        summary: 'Web module for infectology: antibiotic dispensing control linked to resistance surveillance.',
+        detail: `Clinical stakeholders needed one place to reconcile dispensing decisions with microbiology signals — without adding manual spreadsheets to someone’s Friday afternoon.
+
+The module focused on practical guardrails: traceable audit trails, role-aware views for physicians vs pharmacy, and exports that fit existing infection-committee workflows.
+
+Quantifying stewardship impact is never perfect, but we tracked Defined Daily Doses (DDD) alongside resistance alerts to show whether interventions were sticking.`,
+        impact: '↓ 12% Reduction in Defined Daily Doses (DDD)',
+      },
+      {
+        slug: 'warehouse-supply',
+        num: '02 / 2021',
+        title: 'Infrastructure Warehouse Supply Control',
+        org: 'Hospital Alma Mater de Antioquia',
+        tech: 'Web stack · SQL · Inventory workflows',
+        summary: 'Administrative module for entries/exits, stock levels, and fewer unexplained variances.',
+        detail: `Infrastructure teams were losing time reconciling paper trails with what the warehouse actually held on any given week.
+
+We automated the operational backbone: capture at the door, simple validations at posting time, and dashboards that made discrepancies visible early instead of at quarter close.
+
+The emphasis was reliability over novelty — fewer surprises for finance and faster answers when leadership asked “where did it go?”.`,
+        impact: '↓ 45% Reduction in Asset Losses',
+      },
+      {
+        slug: 'executive-kpi',
+        num: '04 / 2024',
+        title: 'Executive KPI pack (Power BI)',
+        org: 'Sehma B&B Holding · Medellin',
+        tech: 'Power BI · DAX · SQL · KPI modeling',
+        summary: 'Executive drill-through on occupancy, margin, and quality — built for a weekly leadership rhythm.',
+        detail: `Executives were getting monthly PDFs that were polished — and already stale.
+
+We rebuilt the narrative around weekly touchpoints: one semantic model, consistent definitions for margin and occupancy, and drill paths that respect role boundaries.
+
+The win wasn’t “more charts”; it was fewer debates about definitions and more time spent deciding what to change next week.`,
+        impact: '↑ Weekly exec touchpoints vs monthly PDFs',
+      },
+      {
+        slug: 'etl-contracts',
+        num: '05 / 2024',
+        title: 'ETL hardening & data contracts',
+        org: 'Freelance · Health operations',
+        tech: 'Python · SQL · dbt-style checks · Documentation',
+        summary: 'Lightweight validation on landing-zone tables before BI — assumptions documented for audits.',
+        detail: `When BI sits on messy landing zones, analysts become accidental firefighters.
+
+I implemented lightweight row-level checks (freshness, keys, impossible combinations) and paired them with short “data contract” notes: what a column means, who owns it, and what “good” looks like.
+
+The objective was defensibility: when a dashboard looks wrong, you can answer whether it’s the metric — or the feed.`,
+        impact: '↓ Invalid rows caught at source',
+      },
+      {
+        slug: 'forecast-rd',
+        num: '06 / R&D',
+        title: 'Forecasting experiments (Python)',
+        org: 'Personal',
+        tech: 'Python · pandas · statsmodels · Prophet',
+        summary: 'ARIMA / Prophet prototypes on operational series — reproducible notebooks and model cards.',
+        detail: `This is an R&D lane: compare baseline seasonal models against Prophet-style approaches on the same operational signals, with honest error reporting.
+
+Every experiment gets a tiny model card — data span, transforms, and what would need to change before production.
+
+It’s not “AI magic”; it’s disciplined iteration with measurable uncertainty.`,
+        impact: 'MAPE benchmarks · WIP',
+      },
     ],
     footer1: '© 2025 Matteo Rodriguez Carmona', footer2: 'Data Analyst · Data Engineer · Full Stack Dev',
   },
   es: {
-    navLinks: ['Pitch', 'Habilidades', 'Experiencia', 'Proyectos', 'Datos abiertos', 'Contacto'],
+    navLinks: ['Pitch', 'Habilidades', 'Experiencia', 'Proyectos', 'Contacto'],
     heroTag: 'Analista de Datos · Data Engineer · Full Stack Developer',
     heroDesc: 'Transformo datos complejos en decisiones que generan impacto real. Especializado en analítica de salud, pipelines ETL y desarrollo full stack para entornos operativos y clínicos.',
     cta1: 'Contáctame', cta2: 'Ver Proyectos',
@@ -69,12 +148,25 @@ export const content = {
     s1tag: '// 01 — Capacidades', s1title: 'Stack Técnico',
     s2tag: '// 02 — Trayectoria', s2title: 'Experiencia',
     s3tag: '// 03 — Lo que he construido', s3title: 'Proyectos',
-    vizTag: '// Live — Visualización',
     vizTitle: 'Top 10 productos por precio promedio',
-    vizCaption:
-      'Gráfico desde JSON público (pipeline canasta familiar · Datos Abiertos Colombia). Ejes: Producto vs precio_promedio en COP.',
+    projectVizOrg: 'Python · Pandas · Recharts · datos.gov.co',
+    projectVizSummary:
+      'Exploración de datos abiertos con un flujo Python → JSON y un gráfico interactivo en React.',
+    projectVizDetail: `Esta publicación describe un flujo reproducible: descargar las últimas filas desde Datos Abiertos Colombia (Socrata), limpiar y tipificar precios con Pandas, exportar un JSON estático para la web y visualizar el Top 10 de mayores precios promedio por Producto.
+
+La idea es reflejar cómo comunico trabajo analítico “de verdad”: fuente explícita, transformaciones claras y un gráfico que se entiende sin adivinar ejes o unidades.
+
+Los valores están en COP; la figura se actualiza cuando regeneras public/data_prices.json.`,
+    projectVizImpact: 'JSON en vivo · Top 10 · orden por precio_promedio',
+    projectChartCaption:
+      'Las barras ordenan productos por precio_promedio medio en el slice consultado; el tooltip muestra el promedio formateado en COP.',
     vizMetaLeft: 'Ordenado por precio_promedio · descendente',
     vizMetaRight: 'Recharts · ResponsiveContainer',
+    publicationOpen: 'Ver publicación',
+    publicationClose: 'Cerrar',
+    carouselPrev: 'Anterior',
+    carouselNext: 'Siguiente',
+    carouselDotGoTo: 'Ir a la diapositiva',
     s4tag: '// 04 — Contacto', s4title: 'Hablemos',
     avail: 'Disponible para proyectos freelance',
     contactDesc: '¿Necesitas un analista, ingeniero de datos o desarrollador que entienda el negocio? Construyamos algo que realmente marque la diferencia.',
@@ -98,10 +190,76 @@ export const content = {
         bullets: ['Analicé datos epidemiológicos y hospitalarios para apoyar <hl>decisiones estratégicas institucionales</hl>.','Diseñé reportes automatizados en Power BI logrando <hl>30% de reducción en tiempo de procesamiento</hl>.','Gestioné bases de datos de salud pública y reportes regulatorios ante el Ministerio de Salud.'] },
     ],
     projects: [
-      { num: '01 / 2023', title: 'Programa de Gestión Antibiótica (PROA)', org: 'Hospital Alma Mater de Antioquia',
-        desc: 'Módulo web personalizado para infectología integrando control de dispensación de antibióticos y vigilancia de resistencia bacteriana.', impact: '↓ 12% Reducción en Dosis Diarias Definidas (DDD)' },
-      { num: '02 / 2021', title: 'Control de Suministros en Infraestructura', org: 'Hospital Alma Mater de Antioquia',
-        desc: 'Módulo administrativo que automatiza el seguimiento de entradas y salidas de bodega, optimizando niveles de stock y reduciendo pérdidas.', impact: '↓ 45% Reducción en Pérdida de Activos' },
+      {
+        slug: 'proa',
+        num: '01 / 2023',
+        title: 'Programa de Gestión Antibiótica (PROA)',
+        org: 'Hospital Alma Mater de Antioquia',
+        tech: 'React · JavaScript · SQL · Integraciones clínicas',
+        summary: 'Módulo web para infectología: control de dispensación conectado a vigilancia de resistencia.',
+        detail: `El equipo clínico necesitaba un solo lugar para conciliar decisiones de dispensación con señales de microbiología — sin sumar planillas manuales al viernes.
+
+El módulo priorizó controles prácticos: trazabilidad, vistas por rol (médicos vs farmacia) y exportaciones alineadas al comité de infecciones.
+
+Medir stewardship nunca es perfecto, pero seguimos DDD junto a alertas de resistencia para ver si las intervenciones se sostenían.`,
+        impact: '↓ 12% Reducción en Dosis Diarias Definidas (DDD)',
+      },
+      {
+        slug: 'warehouse-supply',
+        num: '02 / 2021',
+        title: 'Control de Suministros en Infraestructura',
+        org: 'Hospital Alma Mater de Antioquia',
+        tech: 'Web · SQL · Flujos de inventario',
+        summary: 'Módulo administrativo para entradas/salidas, stock y menos diferencias inexplicables.',
+        detail: `Infraestructura perdía tiempo conciliando papel con lo que la bodega realmente tenía.
+
+Automatizamos el núcleo operativo: captura en puerta, validaciones simples al registrar y tableros que hacían visibles las diferencias a tiempo.
+
+Prioridad: confiabilidad antes que “feature nueva” — menos sorpresas para finanzas y respuestas rápidas cuando dirección preguntaba “¿dónde quedó?”.`,
+        impact: '↓ 45% Reducción en Pérdida de Activos',
+      },
+      {
+        slug: 'executive-kpi',
+        num: '04 / 2024',
+        title: 'Paquete ejecutivo de KPIs (Power BI)',
+        org: 'Sehma B&B Holding · Medellín',
+        tech: 'Power BI · DAX · SQL · Modelado de KPIs',
+        summary: 'Drill-through ejecutivo en ocupación, margen y calidad — pensado para ritmo semanal.',
+        detail: `La dirección recibía PDF mensuales muy bien maquetados… y ya viejos.
+
+Replantamos la narrativa en touchpoints semanales: un modelo semántico, definiciones consistentes de margen y ocupación, y rutas de drill que respetan límites por rol.
+
+La victoria no fue “más gráficos”, sino menos debate sobre definiciones y más tiempo decidiendo qué cambiar la próxima semana.`,
+        impact: '↑ Touchpoints semanales vs PDF mensual',
+      },
+      {
+        slug: 'etl-contracts',
+        num: '05 / 2024',
+        title: 'Endurecimiento ETL y contratos de datos',
+        org: 'Freelance · Operaciones de salud',
+        tech: 'Python · SQL · Checks estilo dbt · Documentación',
+        summary: 'Validación ligera en landing antes del BI — supuestos documentados para auditoría.',
+        detail: `Si el BI se apoya en zonas de aterrizaje sucias, el analista termina apagando incendios.
+
+Implementé controles ligeros (frescura, llaves, combinaciones imposibles) y “contratos” cortos: qué significa una columna, quién la dueña y qué es “correcto”.
+
+El objetivo es defendibilidad: cuando un tablero se ve mal, puedes saber si es la métrica — o la fuente.`,
+        impact: '↓ Filas inválidas detectadas en origen',
+      },
+      {
+        slug: 'forecast-rd',
+        num: '06 / I+D',
+        title: 'Experimentos de pronóstico (Python)',
+        org: 'Personal',
+        tech: 'Python · pandas · statsmodels · Prophet',
+        summary: 'Prototipos ARIMA / Prophet sobre series operativas — notebooks reproducibles y model cards.',
+        detail: `Carril de I+D: comparar modelos estacionales base vs enfoques tipo Prophet sobre las mismas señales, con errores reportados con honestidad.
+
+Cada experimento tiene una model card pequeña: ventana de datos, transformaciones y qué faltaría para producción.
+
+No es “magia de IA”; es iteración disciplinada con incertidumbre medible.`,
+        impact: 'Benchmarks MAPE · WIP',
+      },
     ],
     footer1: '© 2025 Matteo Rodriguez Carmona', footer2: 'Analista de Datos · Data Engineer · Full Stack Dev',
   },

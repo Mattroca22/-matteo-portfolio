@@ -88,3 +88,25 @@
 .top-prices .recharts-text.recharts-label {
   fill: var(--muted);
 }
+
+.top-prices--embedded {
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.top-prices--embedded::before {
+  display: none;
+}
+
+.top-prices--embedded .top-prices__chart {
+  min-height: 0;
+  height: clamp(200px, 22vw, 260px);
+}
+
+.top-prices__state--embedded {
+  min-height: 160px;
+  padding: 1rem;
+  font-size: 0.65rem;
+}

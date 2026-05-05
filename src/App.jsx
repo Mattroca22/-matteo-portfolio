@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
-import TopPricesBarChart from './components/TopPricesBarChart'
+import ProjectsCarousel from './components/ProjectsCarousel'
 import { content } from './content'
 import './App.css'
 
+/** Monitor de Precios — Recharts dashboard (fetch + KPIs + bar chart); used in `ProjectPublicationModal` for the open-data publication. */
+export { default as MonitorPreciosDashboard } from './components/MonitorPreciosDashboard'
+
 const CONTACT_EMAIL = 'matt.roca22@gmail.com'
 
-const SECTION_IDS = ['pitch', 'skills', 'experience', 'projects', 'data-viz', 'contact']
+const SECTION_IDS = ['pitch', 'skills', 'experience', 'projects', 'contact']
 
 function renderBullet(text) {
   return text.split(/<hl>(.*?)<\/hl>/).map((part, i) =>
@@ -223,31 +226,23 @@ export default function App() {
       <section id="projects">
         <div className="section-tag">{t.s3tag}</div>
         <h2 className="section-title">{t.s3title}</h2>
-        <div className="projects-grid fade-in">
-          {t.projects.map((p, i) => (
-            <div className="project-card" key={i}>
-              <div className="pnum">{p.num}</div>
-              <div className="ptitle">{p.title}</div>
-              <div className="porg">{p.org}</div>
-              <p className="pdesc">{p.desc}</p>
-              <div className="pimp">{p.impact}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* OPEN DATA — PRICE CHART */}
-      <section id="data-viz" className="section-alt">
-        <div className="section-tag">{t.vizTag}</div>
-        <h2 className="section-title">{t.vizTitle}</h2>
-        <div className="fade-in">
-          <TopPricesBarChart
-            ariaLabel={t.vizTitle}
-            caption={t.vizCaption}
-            metaLeft={t.vizMetaLeft}
-            metaRight={t.vizMetaRight}
-          />
-        </div>
+        <ProjectsCarousel
+          projects={t.projects}
+          vizTitle={t.vizTitle}
+          vizTech={t.projectVizOrg}
+          vizSummary={t.projectVizSummary}
+          vizDetail={t.projectVizDetail}
+          vizImpact={t.projectVizImpact}
+          vizAriaLabel={t.vizTitle}
+          vizMetaLeft={t.vizMetaLeft}
+          vizMetaRight={t.vizMetaRight}
+          vizChartCaption={t.projectChartCaption}
+          publicationOpen={t.publicationOpen}
+          publicationClose={t.publicationClose}
+          prevLabel={t.carouselPrev}
+          nextLabel={t.carouselNext}
+          dotGoTo={t.carouselDotGoTo}
+        />
       </section>
 
       {/* CONTACT */}
