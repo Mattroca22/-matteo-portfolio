@@ -65,7 +65,7 @@ All values are shown in COP; the figure updates whenever you regenerate public/d
         org: 'Hospital Alma Mater de Antioquia',
         tech: 'React · JavaScript · SQL · Clinical integrations',
         summary: 'Web module for infectology: antibiotic dispensing control linked to resistance surveillance.',
-        detail: `Clinical stakeholders needed one place to reconcile dispensing decisions with microbiology signals — without adding manual spreadsheets to someone’s Friday afternoon.
+        detail: `Clinical stakeholders needed one place to reconcile dispensing decisions with microbiology signals — without adding manual spreadsheets to someone's Friday afternoon.
 
 The module focused on practical guardrails: traceable audit trails, role-aware views for physicians vs pharmacy, and exports that fit existing infection-committee workflows.
 
@@ -83,8 +83,22 @@ Quantifying stewardship impact is never perfect, but we tracked Defined Daily Do
 
 We automated the operational backbone: capture at the door, simple validations at posting time, and dashboards that made discrepancies visible early instead of at quarter close.
 
-The emphasis was reliability over novelty — fewer surprises for finance and faster answers when leadership asked “where did it go?”.`,
+The emphasis was reliability over novelty — fewer surprises for finance and faster answers when leadership asked "where did it go?".`,
         impact: '↓ 45% Reduction in Asset Losses',
+      },
+      {
+        slug: 'clasificador-riesgo',
+        num: '03 / 2025',
+        title: 'Chronic Patient Risk Classifier',
+        org: 'Portfolio · ML · Health Analytics',
+        tech: 'Python · XGBoost · SHAP · scikit-learn · FastAPI · Streamlit',
+        summary: 'XGBoost model that stratifies chronic patients (HTN, DM2, COPD, CKD) into risk tiers with SHAP explainability built in.',
+        detail: `Clinical risk stratification matters most when it's explainable — not just a black box score.
+
+The model ingests 12 clinical-administrative variables (diagnosis, age, comorbidities, adherence, missed controls, prior hospitalizations, geography) and produces a 0–100 risk score with SHAP-based feature attribution.
+
+Built on synthetic but clinically coherent data generated with Faker. Deployed as a Streamlit UI backed by a FastAPI inference endpoint. Reproducible from a single requirements.txt.`,
+        impact: '87% accuracy · AUC-ROC 0.91 · 12 clinical variables',
       },
       {
         slug: 'executive-kpi',
@@ -97,7 +111,7 @@ The emphasis was reliability over novelty — fewer surprises for finance and fa
 
 We rebuilt the narrative around weekly touchpoints: one semantic model, consistent definitions for margin and occupancy, and drill paths that respect role boundaries.
 
-The win wasn’t “more charts”; it was fewer debates about definitions and more time spent deciding what to change next week.`,
+The win wasn't "more charts"; it was fewer debates about definitions and more time spent deciding what to change next week.`,
         impact: '↑ Weekly exec touchpoints vs monthly PDFs',
       },
       {
@@ -109,9 +123,9 @@ The win wasn’t “more charts”; it was fewer debates about definitions and m
         summary: 'Lightweight validation on landing-zone tables before BI — assumptions documented for audits.',
         detail: `When BI sits on messy landing zones, analysts become accidental firefighters.
 
-I implemented lightweight row-level checks (freshness, keys, impossible combinations) and paired them with short “data contract” notes: what a column means, who owns it, and what “good” looks like.
+I implemented lightweight row-level checks (freshness, keys, impossible combinations) and paired them with short "data contract" notes: what a column means, who owns it, and what "good" looks like.
 
-The objective was defensibility: when a dashboard looks wrong, you can answer whether it’s the metric — or the feed.`,
+The objective was defensibility: when a dashboard looks wrong, you can answer whether it's the metric — or the feed.`,
         impact: '↓ Invalid rows caught at source',
       },
       {
@@ -125,7 +139,7 @@ The objective was defensibility: when a dashboard looks wrong, you can answer wh
 
 Every experiment gets a tiny model card — data span, transforms, and what would need to change before production.
 
-It’s not “AI magic”; it’s disciplined iteration with measurable uncertainty.`,
+It's not "AI magic"; it's disciplined iteration with measurable uncertainty.`,
         impact: 'MAPE benchmarks · WIP',
       },
     ],
@@ -154,7 +168,7 @@ It’s not “AI magic”; it’s disciplined iteration with measurable uncertai
       'Exploración de datos abiertos con un flujo Python → JSON y un gráfico interactivo en React.',
     projectVizDetail: `Esta publicación describe un flujo reproducible: descargar las últimas filas desde Datos Abiertos Colombia (Socrata), limpiar y tipificar precios con Pandas, exportar un JSON estático para la web y visualizar el Top 10 de mayores precios promedio por Producto.
 
-La idea es reflejar cómo comunico trabajo analítico “de verdad”: fuente explícita, transformaciones claras y un gráfico que se entiende sin adivinar ejes o unidades.
+La idea es reflejar cómo comunico trabajo analítico "de verdad": fuente explícita, transformaciones claras y un gráfico que se entiende sin adivinar ejes o unidades.
 
 Los valores están en COP; la figura se actualiza cuando regeneras public/data_prices.json.`,
     projectVizImpact: 'JSON en vivo · Top 10 · orden por precio_promedio',
@@ -215,8 +229,22 @@ Medir stewardship nunca es perfecto, pero seguimos DDD junto a alertas de resist
 
 Automatizamos el núcleo operativo: captura en puerta, validaciones simples al registrar y tableros que hacían visibles las diferencias a tiempo.
 
-Prioridad: confiabilidad antes que “feature nueva” — menos sorpresas para finanzas y respuestas rápidas cuando dirección preguntaba “¿dónde quedó?”.`,
+Prioridad: confiabilidad antes que "feature nueva" — menos sorpresas para finanzas y respuestas rápidas cuando dirección preguntaba "¿dónde quedó?".`,
         impact: '↓ 45% Reducción en Pérdida de Activos',
+      },
+      {
+        slug: 'clasificador-riesgo',
+        num: '03 / 2025',
+        title: 'Clasificador de riesgo en pacientes crónicos',
+        org: 'Portafolio · ML · Analítica en Salud',
+        tech: 'Python · XGBoost · SHAP · scikit-learn · FastAPI · Streamlit',
+        summary: 'Modelo XGBoost que estratifica pacientes crónicos (HTA, DM2, EPOC, IRC) en niveles de riesgo con explicabilidad SHAP integrada.',
+        detail: `La estratificación de riesgo clínico tiene valor real cuando es explicable — no solo un número negro.
+
+El modelo procesa 12 variables clínico-administrativas (diagnóstico, edad, comorbilidades, adherencia, controles perdidos, hospitalizaciones previas, zona geográfica) y produce un score 0–100 con atribución de variables vía SHAP.
+
+Construido sobre datos sintéticos clínicamente coherentes generados con Faker. Desplegado como interfaz Streamlit con endpoint de inferencia en FastAPI. Reproducible desde un solo requirements.txt.`,
+        impact: '87% accuracy · AUC-ROC 0.91 · 12 variables clínicas',
       },
       {
         slug: 'executive-kpi',
@@ -229,7 +257,7 @@ Prioridad: confiabilidad antes que “feature nueva” — menos sorpresas para 
 
 Replantamos la narrativa en touchpoints semanales: un modelo semántico, definiciones consistentes de margen y ocupación, y rutas de drill que respetan límites por rol.
 
-La victoria no fue “más gráficos”, sino menos debate sobre definiciones y más tiempo decidiendo qué cambiar la próxima semana.`,
+La victoria no fue "más gráficos", sino menos debate sobre definiciones y más tiempo decidiendo qué cambiar la próxima semana.`,
         impact: '↑ Touchpoints semanales vs PDF mensual',
       },
       {
@@ -241,7 +269,7 @@ La victoria no fue “más gráficos”, sino menos debate sobre definiciones y 
         summary: 'Validación ligera en landing antes del BI — supuestos documentados para auditoría.',
         detail: `Si el BI se apoya en zonas de aterrizaje sucias, el analista termina apagando incendios.
 
-Implementé controles ligeros (frescura, llaves, combinaciones imposibles) y “contratos” cortos: qué significa una columna, quién la dueña y qué es “correcto”.
+Implementé controles ligeros (frescura, llaves, combinaciones imposibles) y "contratos" cortos: qué significa una columna, quién la dueña y qué es "correcto".
 
 El objetivo es defendibilidad: cuando un tablero se ve mal, puedes saber si es la métrica — o la fuente.`,
         impact: '↓ Filas inválidas detectadas en origen',
@@ -257,7 +285,7 @@ El objetivo es defendibilidad: cuando un tablero se ve mal, puedes saber si es l
 
 Cada experimento tiene una model card pequeña: ventana de datos, transformaciones y qué faltaría para producción.
 
-No es “magia de IA”; es iteración disciplinada con incertidumbre medible.`,
+No es "magia de IA"; es iteración disciplinada con incertidumbre medible.`,
         impact: 'Benchmarks MAPE · WIP',
       },
     ],

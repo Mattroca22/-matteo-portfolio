@@ -3,6 +3,7 @@ import ProjectPublicationModal from './ProjectPublicationModal'
 import './ProjectsCarousel.css'
 
 const CHART_SLUG = 'open-data'
+const CLASIFICADOR_SLUG = 'clasificador-riesgo'
 
 function chunk(arr, size) {
   const out = []
@@ -71,7 +72,10 @@ export default function ProjectsCarousel({
   }
 
   const activeProject = useMemo(
-    () => (pubSlug && pubSlug !== CHART_SLUG ? projects.find((p) => p.slug === pubSlug) : null),
+    () =>
+      pubSlug && pubSlug !== CHART_SLUG
+        ? projects.find((p) => p.slug === pubSlug)
+        : null,
     [projects, pubSlug]
   )
 
@@ -88,6 +92,13 @@ export default function ProjectsCarousel({
     }),
     [vizTitle, vizTech, vizDetail, vizImpact, vizChartCaption, vizAriaLabel, vizMetaLeft, vizMetaRight]
   )
+
+  const modalVariant =
+    pubSlug === CHART_SLUG
+      ? 'chart'
+      : pubSlug === CLASIFICADOR_SLUG
+      ? 'clasificador-riesgo'
+      : 'project'
 
   return (
     <>
@@ -203,7 +214,7 @@ export default function ProjectsCarousel({
       <ProjectPublicationModal
         open={pubSlug != null}
         onClose={() => setPubSlug(null)}
-        variant={pubSlug === CHART_SLUG ? 'chart' : 'project'}
+        variant={modalVariant}
         closeLabel={publicationClose}
         project={activeProject || undefined}
         chartCopy={chartCopy}

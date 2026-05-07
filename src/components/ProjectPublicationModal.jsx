@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef } from 'react'
 import MonitorPreciosDashboard from './MonitorPreciosDashboard'
 import './ProjectPublicationModal.css'
+import ClasificadorRiesgo from './ClasificadorRiesgo'
 
 function StopScroll({ lock }) {
   useEffect(() => {

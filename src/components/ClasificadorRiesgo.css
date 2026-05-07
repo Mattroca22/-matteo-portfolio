@@ -1,0 +1,471 @@
+/* ═══════════════════════════════════════════════════
+   ClasificadorRiesgo.css
+   Paleta: Navy profundo · Slate · Ámbar clínico
+   Fuente: IBM Plex Mono (ya disponible via Google Fonts
+           si la agregas en index.html, si no usa
+           Space Mono que ya tiene el portafolio)
+═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables propias del componente ─────────────── */
+.cr-root {
+  --cr-bg:         #0a0e1a;
+  --cr-surface:    #111827;
+  --cr-surface2:   #1a2236;
+  --cr-border:     rgba(255,255,255,0.07);
+  --cr-border2:    rgba(255,255,255,0.12);
+  --cr-text:       #e8edf5;
+  --cr-muted:      #7a8499;
+  --cr-hint:       #4a5568;
+  --cr-amber:      #f59e0b;
+  --cr-amber-dim:  rgba(245,158,11,0.15);
+  --cr-amber-glow: rgba(245,158,11,0.08);
+  --cr-low:        #10b981;
+  --cr-low-bg:     rgba(16,185,129,0.12);
+  --cr-mid:        #f59e0b;
+  --cr-mid-bg:     rgba(245,158,11,0.12);
+  --cr-high:       #ef4444;
+  --cr-high-bg:    rgba(239,68,68,0.12);
+  --cr-mono:       'IBM Plex Mono', 'Space Mono', monospace;
+  --cr-sans:       'IBM Plex Sans', 'Space Grotesk', sans-serif;
+
+  font-family: var(--cr-sans);
+  background: var(--cr-bg);
+  color: var(--cr-text);
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+/* ── Header ──────────────────────────────────────── */
+.cr-header {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--cr-border);
+  background: linear-gradient(135deg, #0d1220 0%, #111827 100%);
+}
+
+.cr-header-label {
+  font-family: var(--cr-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cr-amber);
+  margin-bottom: 0.75rem;
+}
+
+.cr-title {
+  font-family: var(--cr-sans);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--cr-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.3px;
+}
+
+.cr-subtitle {
+  font-size: 14px;
+  color: var(--cr-muted);
+  max-width: 600px;
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.cr-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cr-pill {
+  font-family: var(--cr-mono);
+  font-size: 10.5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: var(--cr-amber-dim);
+  color: var(--cr-amber);
+  border: 1px solid rgba(245,158,11,0.2);
+  letter-spacing: 0.3px;
+}
+
+/* ── Demo layout ─────────────────────────────────── */
+.cr-demo {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 0;
+  border-bottom: 1px solid var(--cr-border);
+}
+
+@media (max-width: 700px) {
+  .cr-demo { grid-template-columns: 1fr; }
+}
+
+/* ── Inputs panel ────────────────────────────────── */
+.cr-inputs {
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid var(--cr-border);
+  background: var(--cr-surface);
+}
+
+@media (max-width: 700px) {
+  .cr-inputs { border-right: none; border-bottom: 1px solid var(--cr-border); }
+}
+
+.cr-inputs-label {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cr-hint);
+  margin-bottom: 1.25rem;
+}
+
+.cr-field {
+  margin-bottom: 1.1rem;
+}
+
+.cr-field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.cr-label {
+  font-size: 12.5px;
+  color: var(--cr-muted);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.cr-val {
+  font-family: var(--cr-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cr-amber);
+  min-width: 20px;
+  text-align: right;
+}
+
+/* Slider */
+.cr-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--cr-border2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+
+.cr-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cr-amber);
+  border: 2px solid var(--cr-bg);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.cr-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.cr-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cr-amber);
+  border: 2px solid var(--cr-bg);
+  cursor: pointer;
+}
+
+.cr-slider-range {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  color: var(--cr-hint);
+}
+
+/* Select */
+.cr-select {
+  width: 100%;
+  background: var(--cr-surface2);
+  border: 1px solid var(--cr-border2);
+  border-radius: 6px;
+  color: var(--cr-text);
+  font-family: var(--cr-sans);
+  font-size: 13px;
+  padding: 7px 10px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234a5568'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.cr-select:focus {
+  border-color: rgba(245,158,11,0.4);
+}
+
+/* ── Output panel ────────────────────────────────── */
+.cr-output {
+  padding: 1.5rem 1.75rem;
+  background: var(--cr-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Gauge */
+.cr-gauge {
+  padding: 1.1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--cr-border2);
+  background: var(--cr-surface);
+}
+
+.cr-gauge-track {
+  height: 6px;
+  background: var(--cr-surface2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.cr-gauge-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+.cr-gauge--low  .cr-gauge-fill { background: var(--cr-low); }
+.cr-gauge--mid  .cr-gauge-fill { background: var(--cr-mid); }
+.cr-gauge--high .cr-gauge-fill { background: var(--cr-high); }
+
+.cr-gauge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cr-risk-badge {
+  font-family: var(--cr-mono);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.cr-risk-badge--low  { background: var(--cr-low-bg);  color: var(--cr-low); }
+.cr-risk-badge--mid  { background: var(--cr-mid-bg);  color: var(--cr-mid); }
+.cr-risk-badge--high { background: var(--cr-high-bg); color: var(--cr-high); }
+
+.cr-score-num {
+  font-family: var(--cr-mono);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--cr-text);
+  letter-spacing: -1px;
+}
+
+.cr-score-denom {
+  font-size: 13px;
+  color: var(--cr-hint);
+  font-weight: 400;
+}
+
+/* SHAP */
+.cr-shap { display: flex; flex-direction: column; gap: 0; }
+
+.cr-shap-title {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cr-hint);
+  margin-bottom: 0.9rem;
+}
+
+.cr-shap-row { margin-bottom: 10px; }
+
+.cr-shap-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.cr-shap-label {
+  font-size: 12px;
+  color: var(--cr-muted);
+}
+
+.cr-shap-note {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  color: var(--cr-hint);
+}
+
+.cr-shap-track {
+  height: 4px;
+  background: var(--cr-surface2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cr-shap-bar {
+  height: 100%;
+  background: var(--cr-amber);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1);
+  opacity: 0.75;
+}
+
+/* Actions */
+.cr-actions-title {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cr-hint);
+  margin-bottom: 0.75rem;
+}
+
+.cr-actions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cr-action {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--cr-muted);
+  line-height: 1.5;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--cr-border);
+}
+
+.cr-action:last-child { border-bottom: none; }
+
+.cr-action-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.cr-action-dot--high { background: var(--cr-high); }
+.cr-action-dot--mid  { background: var(--cr-mid); }
+.cr-action-dot--ok   { background: var(--cr-low); }
+
+/* ── Metrics strip ───────────────────────────────── */
+.cr-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  border-bottom: 1px solid var(--cr-border);
+}
+
+.cr-metric {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--cr-border);
+  text-align: center;
+}
+
+.cr-metric:last-child { border-right: none; }
+
+.cr-metric-val {
+  font-family: var(--cr-mono);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--cr-amber);
+  margin-bottom: 3px;
+  letter-spacing: -0.5px;
+}
+
+.cr-metric-label {
+  font-size: 12px;
+  color: var(--cr-text);
+  margin-bottom: 2px;
+}
+
+.cr-metric-sub {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  color: var(--cr-hint);
+}
+
+/* ── Roadmap ─────────────────────────────────────── */
+.cr-roadmap {
+  padding: 1.5rem 2rem 2rem;
+  background: var(--cr-surface);
+}
+
+.cr-roadmap-title {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cr-hint);
+  margin-bottom: 1rem;
+}
+
+.cr-roadmap-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.cr-step {
+  background: var(--cr-surface2);
+  border: 1px solid var(--cr-border2);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cr-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cr-amber);
+  opacity: 0.4;
+}
+
+.cr-step-week {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  color: var(--cr-amber);
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.cr-step-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cr-text);
+  margin-bottom: 3px;
+}
+
+.cr-step-tech {
+  font-family: var(--cr-mono);
+  font-size: 10px;
+  color: var(--cr-hint);
+  line-height: 1.4;
+}
