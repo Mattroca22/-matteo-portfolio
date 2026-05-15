@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProjectsCarousel from './components/ProjectsCarousel'
+import ClasificadorRiesgo from './components/ClasificadorRiesgo'
 import { content } from './content'
 import './App.css'
 

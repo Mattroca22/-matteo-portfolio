@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef } from 'react'
 import MonitorPreciosDashboard from './MonitorPreciosDashboard'
-import './ProjectPublicationModal.css'
 import ClasificadorRiesgo from './ClasificadorRiesgo'
+import './ProjectPublicationModal.css'
 
 function StopScroll({ lock }) {
   useEffect(() => {
@@ -42,6 +42,7 @@ export default function ProjectPublicationModal({
   if (!open) return null
 
   const isChart = variant === 'chart'
+  const isClasificador = variant === 'clasificador-riesgo'
 
   return (
     <>
@@ -61,13 +62,19 @@ export default function ProjectPublicationModal({
         <div className="pub-modal__panel">
           <header className="pub-modal__head">
             <div className="pub-modal__titles">
-              {!isChart && project?.num ? (
+              {!isChart && !isClasificador && project?.num ? (
+                <div className="pub-modal__num">{project.num}</div>
+              ) : null}
+              {isClasificador && project?.num ? (
                 <div className="pub-modal__num">{project.num}</div>
               ) : null}
               <h2 id={titleId} className="pub-modal__title">
                 {isChart ? chartCopy.title : project?.title}
               </h2>
-              {!isChart && project?.org ? (
+              {!isChart && !isClasificador && project?.org ? (
+                <div className="pub-modal__org">{project.org}</div>
+              ) : null}
+              {isClasificador && project?.org ? (
                 <div className="pub-modal__org">{project.org}</div>
               ) : null}
               <div className="pub-modal__tech">
@@ -86,7 +93,10 @@ export default function ProjectPublicationModal({
           </header>
 
           <div className="pub-modal__body">
-            {!isChart && project?.impact ? (
+            {!isChart && !isClasificador && project?.impact ? (
+              <div className="pub-modal__impact">{project.impact}</div>
+            ) : null}
+            {isClasificador && project?.impact ? (
               <div className="pub-modal__impact">{project.impact}</div>
             ) : null}
             {isChart && chartCopy?.impact ? (
@@ -109,6 +119,12 @@ export default function ProjectPublicationModal({
                 {chartCopy?.chartCaption ? (
                   <p className="pub-modal__chart-note">{chartCopy.chartCaption}</p>
                 ) : null}
+              </div>
+            ) : null}
+
+            {isClasificador ? (
+              <div className="pub-modal__viz">
+                <ClasificadorRiesgo />
               </div>
             ) : null}
           </div>

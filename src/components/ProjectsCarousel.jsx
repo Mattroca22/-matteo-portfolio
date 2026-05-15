@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import ProjectPublicationModal from './ProjectPublicationModal'
+import ClasificadorRiesgo from './ClasificadorRiesgo'
 import './ProjectsCarousel.css'
 
 const CHART_SLUG = 'open-data'
@@ -42,8 +43,9 @@ export default function ProjectsCarousel({
     const first = [
       list[0] ? { kind: 'project', data: list[0] } : null,
       list[1] ? { kind: 'project', data: list[1] } : null,
-      { kind: 'chart' },
+      { kind: 'component', component: <ClasificadorRiesgo /> } // Cambiamos 'chart' por el componente real,
     ]
+
     const rest = list.slice(2)
     const tailSlides = chunk(rest, 3).map((group) => group.map((data) => ({ kind: 'project', data })))
     return [first, ...tailSlides]
