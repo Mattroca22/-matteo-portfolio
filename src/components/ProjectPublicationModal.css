@@ -1,37 +1,40 @@
 .pub-modal {
   position: fixed;
   inset: 0;
-  z-index: 400;
+  /* Subimos el z-index a un nivel que flote sobre el menú, footer y cualquier otra sección */
+  z-index: 9999 !important; 
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Centra el modal perfectamente vertical en la pantalla */
   justify-content: center;
   padding: clamp(0.75rem, 4vw, 2rem);
   box-sizing: border-box;
 }
 
 .pub-modal__backdrop {
-  position: absolute;
+  /* Cambiado a fixed para asegurar que cubra toda la pantalla visual de fondo */
+  position: fixed; 
   inset: 0;
   border: none;
   padding: 0;
   margin: 0;
   cursor: pointer;
-  background: rgba(4, 8, 12, 0.82);
-  backdrop-filter: blur(10px);
+  background: rgba(4, 8, 12, 0.88); /* Fondo un toque más oscuro para camuflar el fondo */
+  backdrop-filter: blur(12px);
 }
 
 .pub-modal__panel {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   width: min(100%, 760px);
-  max-height: min(92vh, 900px);
+  /* Ajustamos el tamaño máximo para que nunca toque los bordes físicos de la pantalla */
+  max-height: calc(100vh - clamp(1.5rem, 8vw, 4rem)); 
   overflow: hidden;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border);
   background: var(--surface);
   border-radius: 14px;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.65);
 }
 
 .pub-modal__head {
@@ -103,7 +106,7 @@
 }
 
 .pub-modal__body {
-  overflow-y: auto;
+  overflow-y: auto; /* Mantiene el scroll fino exclusivamente dentro de la zona de texto/gráfico */
   padding: 1.25rem 1.35rem 1.5rem;
   flex: 1;
   min-height: 0;

@@ -145,13 +145,30 @@
   padding: 0.72rem 1rem !important;
 }
 
-.project-card--viz .project-card__cta {
-  border-color: rgba(0, 212, 170, 0.35);
-}
-
 .project-card--placeholder {
   min-height: 17.5rem;
   background: var(--surface);
   opacity: 0.35;
   pointer-events: none;
+}
+
+/* ==========================================================================
+   ESTILOS DE BOTONES UNIFICADOS (HOVER IGUAL PARA TODOS)
+   ========================================================================== */
+
+/* 1. Forzar a que el botón especial empiece sobrio, idéntico a los de la izquierda */
+.project-card--viz .project-card__cta {
+  background: transparent !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+/* 2. EFECTO HOVER UNIFICADO: Aplica exactamente el mismo brillo a TODOS al pasar el mouse */
+.project-card__cta:hover,
+.project-card--viz .project-card__cta:hover {
+  background: rgba(0, 212, 170, 0.08) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 12px rgba(0, 212, 170, 0.15) !important;
 }

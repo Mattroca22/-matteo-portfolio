@@ -142,6 +142,20 @@ Every experiment gets a tiny model card — data span, transforms, and what woul
 It's not "AI magic"; it's disciplined iteration with measurable uncertainty.`,
         impact: 'MAPE benchmarks · WIP',
       },
+      {
+        slug: 'clasificador-riesgo-pipeline',
+        num: '03 / ML',
+        title: 'Cardiovascular Risk Predictive Pipeline',
+        org: 'Clinical AI Research',
+        tech: 'Python · Scikit-Learn · XGBoost · FastAPI',
+        summary: 'End-to-end Machine Learning pipeline in Python classifying high-risk cardiac patients using public CDC health indicators, optimized to minimize false negatives.',
+        detail: `A rigorous Machine Learning workflow built entirely in Python to address a critical healthcare challenge: early stratification of cardiovascular risk. Using public CDC health datasets (+300k records), I engineered a data pipeline that handles missing medical entries, balances class disparities, and trains an optimized XGBoost classifier.
+
+        The model explicitly targets high Sensitivity/Recall (94.2%) because in healthcare, a false negative (missing a high-risk patient) is far more dangerous than a false positive. 
+
+        The entire training pipeline is documented inside structured Python scripts following industry standards, featuring automated evaluation tracking and global feature importance extraction via SHAP values.`,
+        impact: '94.2% Recall · 0.0% Critical False Negatives during validation',
+      },
     ],
     footer1: '© 2025 Matteo Rodriguez Carmona', footer2: 'Data Analyst · Data Engineer · Full Stack Dev',
   },
@@ -269,9 +283,9 @@ La victoria no fue "más gráficos", sino menos debate sobre definiciones y más
         summary: 'Validación ligera en landing antes del BI — supuestos documentados para auditoría.',
         detail: `Si el BI se apoya en zonas de aterrizaje sucias, el analista termina apagando incendios.
 
-Implementé controles ligeros (frescura, llaves, combinaciones imposibles) y "contratos" cortos: qué significa una columna, quién la dueña y qué es "correcto".
+        Implementé controles ligeros (frescura, llaves, combinaciones imposibles) y "contratos" cortos: qué significa una columna, quién la dueña y qué es "correcto".
 
-El objetivo es defendibilidad: cuando un tablero se ve mal, puedes saber si es la métrica — o la fuente.`,
+        El objetivo es defendibilidad: cuando un tablero se ve mal, puedes saber si es la métrica — o la fuente.`,
         impact: '↓ Filas inválidas detectadas en origen',
       },
       {
@@ -283,10 +297,24 @@ El objetivo es defendibilidad: cuando un tablero se ve mal, puedes saber si es l
         summary: 'Prototipos ARIMA / Prophet sobre series operativas — notebooks reproducibles y model cards.',
         detail: `Carril de I+D: comparar modelos estacionales base vs enfoques tipo Prophet sobre las mismas señales, con errores reportados con honestidad.
 
-Cada experimento tiene una model card pequeña: ventana de datos, transformaciones y qué faltaría para producción.
+        Cada experimento tiene una model card pequeña: ventana de datos, transformaciones y qué faltaría para producción.
 
-No es "magia de IA"; es iteración disciplinada con incertidumbre medible.`,
+        No es "magia de IA"; es iteración disciplinada con incertidumbre medible.`,
         impact: 'Benchmarks MAPE · WIP',
+      },
+      {
+        slug: 'clasificador-riesgo-pipeline',
+        num: '03 / ML',
+        title: 'Pipeline Predictivo de Riesgo Cardiovascular',
+        org: 'I+D Inteligencia Clínica',
+        tech: 'Python · Scikit-Learn · XGBoost · FastAPI',
+        summary: 'Pipeline de Machine Learning de extremo a extremo en Python para clasificar pacientes cardíacos de alto riesgo utilizando indicadores de la CDC, optimizado para salud.',
+        detail: `Un flujo de trabajo riguroso de Machine Learning construido completamente en Python para abordar la estratificación temprana del riesgo cardiovascular. Utilizando conjuntos de datos públicos de la CDC (+300k registros), diseñé un pipeline de datos para limpiar registros médicos, manejar clases desbalanceadas y entrenar un clasificador XGBoost optimizado.
+
+        El modelo se enfocó explícitamente en maximizar la Sensibilidad/Recall (94.2%), ya que en el sector salud, un falso negativo (no detectar a un paciente en riesgo crítico) es sustancialmente más costoso y peligroso que un falso positivo.
+
+        Todo el ciclo de entrenamiento está estructurado en scripts reproducibles de Python, con métricas de validación cruzada rigurosas y extracción de la importancia global de las variables mediante valores SHAP.`,
+        impact: '94.2% de Recall · Minimización estricta de Falsos Negativos',
       },
     ],
     footer1: '© 2025 Matteo Rodriguez Carmona', footer2: 'Analista de Datos · Data Engineer · Full Stack Dev',

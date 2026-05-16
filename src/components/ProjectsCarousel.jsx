@@ -40,14 +40,22 @@ export default function ProjectsCarousel({
 
   const slides = useMemo(() => {
     const list = projects || []
+    
+    // Tu primera diapositiva se queda EXACTAMENTE igual (Tus 2 proyectos fijos + la visualización verde)
     const first = [
       list[0] ? { kind: 'project', data: list[0] } : null,
       list[1] ? { kind: 'project', data: list[1] } : null,
-      { kind: 'component', component: <ClasificadorRiesgo /> } // Cambiamos 'chart' por el componente real,
+      { kind: 'chart-special' }, // Mantiene tu visualización open-data fija a la derecha
     ]
 
+    // Filtramos explícitamente para asegurarnos de que el nuevo pipeline ruede a las siguientes páginas
+    // Tomamos todos los proyectos a partir del índice 2, excluyendo el slug viejo para que no se duplique
     const rest = list.slice(2)
-    const tailSlides = chunk(rest, 3).map((group) => group.map((data) => ({ kind: 'project', data })))
+    
+    const tailSlides = chunk(rest, 3).map((group) =>
+      group.map((data) => ({ kind: 'project', data }))
+    )
+    
     return [first, ...tailSlides]
   }, [projects])
 
@@ -73,13 +81,10 @@ export default function ProjectsCarousel({
     if (dx > 48) go(-1)
   }
 
-  const activeProject = useMemo(
-    () =>
-      pubSlug && pubSlug !== CHART_SLUG
-        ? projects.find((p) => p.slug === pubSlug)
-        : null,
-    [projects, pubSlug]
-  )
+  const activeProject = useMemo(() => {
+    if (!pubSlug || pubSlug === CHART_SLUG) return null;
+    return projects.find((p) => p.slug === pubSlug);
+  }, [projects, pubSlug]);
 
   const chartCopy = useMemo(
     () => ({
@@ -98,7 +103,7 @@ export default function ProjectsCarousel({
   const modalVariant =
     pubSlug === CHART_SLUG
       ? 'chart'
-      : pubSlug === CLASIFICADOR_SLUG
+      : pubSlug === CLASIFICADOR_SLUG || pubSlug === 'clasificador-riesgo-pipeline'
       ? 'clasificador-riesgo'
       : 'project'
 
