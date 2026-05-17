@@ -1,8 +1,9 @@
 import { useEffect, useId, useRef } from 'react'
-import { createPortal } from 'react-dom' // <-- Importamos el portal nativo de React
+import { createPortal } from 'react-dom'
 import MonitorPreciosDashboard from './MonitorPreciosDashboard'
 import ClasificadorRiesgo from './ClasificadorRiesgo'
 import './ProjectPublicationModal.css'
+import AutomotiveExecutiveDashboard from './AutomotiveExecutiveDashboard';
 
 function StopScroll({ lock }) {
   useEffect(() => {
@@ -46,8 +47,8 @@ export default function ProjectPublicationModal({
   const isClasificadorViejo = variant === 'clasificador-riesgo' && project?.slug === 'clasificador-riesgo'
   const isClasificadorPipeline = variant === 'clasificador-riesgo' && project?.slug === 'clasificador-riesgo-pipeline'
   const isClasificador = isClasificadorViejo || isClasificadorPipeline
+  const isAutomotive = project?.slug === 'automotive-market-api'
 
-  // Usamos createPortal para inyectar este HTML al final del body de la app
   return createPortal(
     <>
       <StopScroll lock />
@@ -117,6 +118,12 @@ export default function ProjectPublicationModal({
               </div>
             ) : null}
 
+            {isAutomotive ? (
+              <div className="pub-modal__viz">
+                <AutomotiveExecutiveDashboard />
+              </div>
+            ) : null}
+
             {isClasificadorViejo ? (
               <div className="pub-modal__viz">
                 <ClasificadorRiesgo />
@@ -149,6 +156,6 @@ export default function ProjectPublicationModal({
         </div>
       </div>
     </>,
-    document.body // Inyección directa en la raíz del documento para limpiar el z-index
+    document.body
   )
 }

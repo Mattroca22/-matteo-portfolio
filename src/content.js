@@ -67,84 +67,96 @@ All values are shown in COP; the figure updates whenever you regenerate public/d
         summary: 'Web module for infectology: antibiotic dispensing control linked to resistance surveillance.',
         detail: `Clinical stakeholders needed one place to reconcile dispensing decisions with microbiology signals — without adding manual spreadsheets to someone's Friday afternoon.
 
-The module focused on practical guardrails: traceable audit trails, role-aware views for physicians vs pharmacy, and exports that fit existing infection-committee workflows.
+        The module focused on practical guardrails: traceable audit trails, role-aware views for physicians vs pharmacy, and exports that fit existing infection-committee workflows.
 
-Quantifying stewardship impact is never perfect, but we tracked Defined Daily Doses (DDD) alongside resistance alerts to show whether interventions were sticking.`,
+        Quantifying stewardship impact is never perfect, but we tracked Defined Daily Doses (DDD) alongside resistance alerts to show whether interventions were sticking.`,
         impact: '↓ 12% Reduction in Defined Daily Doses (DDD)',
       },
       {
+        slug: "automotive-market-api",
+        num: "02 / 2024",
+        title: "Automotive Safety & Market Analytics",
+        org: "Public Sector Data Pipeline",
+        tech: "Python · REST APIs · Pandas · Interactive SVG",
+        summary: "Automated ETL pipeline that consumes live federal automotive data via REST APIs, rendering analytical metrics for executive market oversight.",
+        detail: `This project implements a fully automated data pipeline in Python that connects to public transportation safety APIs. It ingests, cleans, and structures complex manufacturing and sales metrics into high-fidelity JSON feeds.
+
+        The dashboard leverages this pipeline to show historical top-selling models, live market share distributions, and geographic regional sales density mapped on a real interactive SVG layout. This allows decision-makers to analyze cross-regional volume trends dynamically without underlying API overhead.`,
+        impact: "100% Automated Ingestion · Multi-dimensional Analytics",
+      },
+      {
         slug: 'warehouse-supply',
-        num: '02 / 2021',
+        num: '03 / 2021',
         title: 'Infrastructure Warehouse Supply Control',
         org: 'Hospital Alma Mater de Antioquia',
         tech: 'Web stack · SQL · Inventory workflows',
         summary: 'Administrative module for entries/exits, stock levels, and fewer unexplained variances.',
         detail: `Infrastructure teams were losing time reconciling paper trails with what the warehouse actually held on any given week.
 
-We automated the operational backbone: capture at the door, simple validations at posting time, and dashboards that made discrepancies visible early instead of at quarter close.
+        We automated the operational backbone: capture at the door, simple validations at posting time, and dashboards that made discrepancies visible early instead of at quarter close.
 
-The emphasis was reliability over novelty — fewer surprises for finance and faster answers when leadership asked "where did it go?".`,
+        The emphasis was reliability over novelty — fewer surprises for finance and faster answers when leadership asked "where did it go?".`,
         impact: '↓ 45% Reduction in Asset Losses',
       },
       {
         slug: 'clasificador-riesgo',
-        num: '03 / 2025',
+        num: '04 / 2025',
         title: 'Chronic Patient Risk Classifier',
         org: 'Portfolio · ML · Health Analytics',
         tech: 'Python · XGBoost · SHAP · scikit-learn · FastAPI · Streamlit',
         summary: 'XGBoost model that stratifies chronic patients (HTN, DM2, COPD, CKD) into risk tiers with SHAP explainability built in.',
         detail: `Clinical risk stratification matters most when it's explainable — not just a black box score.
 
-The model ingests 12 clinical-administrative variables (diagnosis, age, comorbidities, adherence, missed controls, prior hospitalizations, geography) and produces a 0–100 risk score with SHAP-based feature attribution.
+        The model ingests 12 clinical-administrative variables (diagnosis, age, comorbidities, adherence, missed controls, prior hospitalizations, geography) and produces a 0–100 risk score with SHAP-based feature attribution.
 
-Built on synthetic but clinically coherent data generated with Faker. Deployed as a Streamlit UI backed by a FastAPI inference endpoint. Reproducible from a single requirements.txt.`,
+        Built on synthetic but clinically coherent data generated with Faker. Deployed as a Streamlit UI backed by a FastAPI inference endpoint. Reproducible from a single requirements.txt.`,
         impact: '87% accuracy · AUC-ROC 0.91 · 12 clinical variables',
       },
       {
         slug: 'executive-kpi',
-        num: '04 / 2024',
+        num: '05 / 2024',
         title: 'Executive KPI pack (Power BI)',
         org: 'Sehma B&B Holding · Medellin',
         tech: 'Power BI · DAX · SQL · KPI modeling',
         summary: 'Executive drill-through on occupancy, margin, and quality — built for a weekly leadership rhythm.',
         detail: `Executives were getting monthly PDFs that were polished — and already stale.
 
-We rebuilt the narrative around weekly touchpoints: one semantic model, consistent definitions for margin and occupancy, and drill paths that respect role boundaries.
+        We rebuilt the narrative around weekly touchpoints: one semantic model, consistent definitions for margin and occupancy, and drill paths that respect role boundaries.
 
-The win wasn't "more charts"; it was fewer debates about definitions and more time spent deciding what to change next week.`,
+        The win wasn't "more charts"; it was fewer debates about definitions and more time spent deciding what to change next week.`,
         impact: '↑ Weekly exec touchpoints vs monthly PDFs',
       },
       {
         slug: 'etl-contracts',
-        num: '05 / 2024',
+        num: '06 / 2024',
         title: 'ETL hardening & data contracts',
         org: 'Freelance · Health operations',
         tech: 'Python · SQL · dbt-style checks · Documentation',
         summary: 'Lightweight validation on landing-zone tables before BI — assumptions documented for audits.',
         detail: `When BI sits on messy landing zones, analysts become accidental firefighters.
 
-I implemented lightweight row-level checks (freshness, keys, impossible combinations) and paired them with short "data contract" notes: what a column means, who owns it, and what "good" looks like.
+        I implemented lightweight row-level checks (freshness, keys, impossible combinations) and paired them with short "data contract" notes: what a column means, who owns it, and what "good" looks like.
 
-The objective was defensibility: when a dashboard looks wrong, you can answer whether it's the metric — or the feed.`,
+        The objective was defensibility: when a dashboard looks wrong, you can answer whether it's the metric — or the feed.`,
         impact: '↓ Invalid rows caught at source',
       },
       {
         slug: 'forecast-rd',
-        num: '06 / R&D',
+        num: '07 / R&D',
         title: 'Forecasting experiments (Python)',
         org: 'Personal',
         tech: 'Python · pandas · statsmodels · Prophet',
         summary: 'ARIMA / Prophet prototypes on operational series — reproducible notebooks and model cards.',
         detail: `This is an R&D lane: compare baseline seasonal models against Prophet-style approaches on the same operational signals, with honest error reporting.
 
-Every experiment gets a tiny model card — data span, transforms, and what would need to change before production.
+        Every experiment gets a tiny model card — data span, transforms, and what would need to change before production.
 
-It's not "AI magic"; it's disciplined iteration with measurable uncertainty.`,
+        It's not "AI magic"; it's disciplined iteration with measurable uncertainty.`,
         impact: 'MAPE benchmarks · WIP',
       },
       {
         slug: 'clasificador-riesgo-pipeline',
-        num: '03 / ML',
+        num: '08 / ML',
         title: 'Cardiovascular Risk Predictive Pipeline',
         org: 'Clinical AI Research',
         tech: 'Python · Scikit-Learn · XGBoost · FastAPI',
@@ -182,9 +194,9 @@ It's not "AI magic"; it's disciplined iteration with measurable uncertainty.`,
       'Exploración de datos abiertos con un flujo Python → JSON y un gráfico interactivo en React.',
     projectVizDetail: `Esta publicación describe un flujo reproducible: descargar las últimas filas desde Datos Abiertos Colombia (Socrata), limpiar y tipificar precios con Pandas, exportar un JSON estático para la web y visualizar el Top 10 de mayores precios promedio por Producto.
 
-La idea es reflejar cómo comunico trabajo analítico "de verdad": fuente explícita, transformaciones claras y un gráfico que se entiende sin adivinar ejes o unidades.
+    La idea es reflejar cómo comunico trabajo analítico "de verdad": fuente explícita, transformaciones claras y un gráfico que se entiende sin adivinar ejes o unidades.
 
-Los valores están en COP; la figura se actualiza cuando regeneras public/data_prices.json.`,
+    Los valores están en COP; la figura se actualiza cuando regeneras public/data_prices.json.`,
     projectVizImpact: 'JSON en vivo · Top 10 · orden por precio_promedio',
     projectChartCaption:
       'Las barras ordenan productos por precio_promedio medio en el slice consultado; el tooltip muestra el promedio formateado en COP.',
@@ -210,12 +222,12 @@ Los valores están en COP; la figura se actualiza cuando regeneras public/data_p
     formHintNoKey: 'Agrega VITE_WEB3FORMS_ACCESS_KEY en un archivo .env (gratis en web3forms.com) para enviar desde esta pagina. Si no, abrimos tu app de correo con el mensaje listo.',
     cta3: '→ Iniciar Proyecto',
     jobs: [
+      { period: 'Ene 2022 — Sep 2024', role: 'Analista de Información en Salud', co: 'Hospital Alma Mater de Antioquia · Medellín',
+        bullets: ['Analicé datos epidemiológicos y hospitalarios para apoyar <hl>decisiones estratégicas institucionales</hl>.','Diseñé reportes automatizados en Power BI logrando <hl>30% de reducción en tiempo de procesamiento</hl>.','Gestioné bases de datos de salud pública y reportes regulatorios ante el Ministerio de Salud.'] },
       { period: 'Sep 2025 — Presente', role: 'Product Manager', co: 'Sehma B&B Holding · Home Health Care · Medellín',
         bullets: ['Diseñé y mantengo <hl>modelos de datos y procesos ETL</hl> para centralizar información operativa.','Construí dashboards con KPIs de operaciones, conversión y calidad para mejorar la visibilidad del negocio.','Automaticé flujos de reportes — <hl>reduciendo errores manuales</hl> significativamente.'] },
       { period: 'Oct 2024 — Mar 2025', role: 'Profesional de Apoyo Regional', co: 'Hospital Alma Mater de Antioquia · Medellín',
         bullets: ['Gestioné <hl>datos geoespaciales con ArcGIS</hl> para identificar zonas críticas en salud pública.','Produje informes técnicos periódicos para programas de vigilancia epidemiológica regional.','Consolidé datos de múltiples fuentes en reportes para equipos directivos.'] },
-      { period: 'Ene 2022 — Sep 2024', role: 'Analista de Información en Salud', co: 'Hospital Alma Mater de Antioquia · Medellín',
-        bullets: ['Analicé datos epidemiológicos y hospitalarios para apoyar <hl>decisiones estratégicas institucionales</hl>.','Diseñé reportes automatizados en Power BI logrando <hl>30% de reducción en tiempo de procesamiento</hl>.','Gestioné bases de datos de salud pública y reportes regulatorios ante el Ministerio de Salud.'] },
     ],
     projects: [
       {
@@ -227,56 +239,68 @@ Los valores están en COP; la figura se actualiza cuando regeneras public/data_p
         summary: 'Módulo web para infectología: control de dispensación conectado a vigilancia de resistencia.',
         detail: `El equipo clínico necesitaba un solo lugar para conciliar decisiones de dispensación con señales de microbiología — sin sumar planillas manuales al viernes.
 
-El módulo priorizó controles prácticos: trazabilidad, vistas por rol (médicos vs farmacia) y exportaciones alineadas al comité de infecciones.
+        El módulo priorizó controles prácticos: trazabilidad, vistas por rol (médicos vs farmacia) y exportaciones alineadas al comité de infecciones.
 
-Medir stewardship nunca es perfecto, pero seguimos DDD junto a alertas de resistencia para ver si las intervenciones se sostenían.`,
+        Medir stewardship nunca es perfecto, pero seguimos DDD junto a alertas de resistencia para ver si las intervenciones se sostenían.`,
         impact: '↓ 12% Reducción en Dosis Diarias Definidas (DDD)',
       },
       {
+        slug: "automotive-market-api",
+        num: "02 / 2024",
+        title: "Analítica y Seguridad Automotriz",
+        org: "Pipeline de Datos del Sector Público",
+        tech: "Python · APIs REST · Pandas · SVG Interactivo",
+        summary: "Pipeline ETL automatizado que consume datos automotrices en vivo mediante APIs REST, generando métricas analíticas para la supervisión ejecutiva del mercado.",
+        detail: `Este proyecto implementa un pipeline de datos completamente automatizado en Python que se conecta a APIs públicas de seguridad en el transporte. Ingiere, limpia y estructura registros complejos de manufactura y llamados a revisión en feeds JSON de alta fidelidad.
+
+        El panel analítico consume este feed para generar análisis de participación de mercado, tendencias YoY de volumen trimestral y un mapa político dinámico mapeado sobre SVG reales, iluminando las densidades regionales de comercialización por estado sin demoras de red.`,
+        impact: "Ingesta 100% Automatizada · Análisis Multidimensional",
+      },
+      {
         slug: 'warehouse-supply',
-        num: '02 / 2021',
+        num: '03 / 2021',
         title: 'Control de Suministros en Infraestructura',
         org: 'Hospital Alma Mater de Antioquia',
         tech: 'Web · SQL · Flujos de inventario',
         summary: 'Módulo administrativo para entradas/salidas, stock y menos diferencias inexplicables.',
         detail: `Infraestructura perdía tiempo conciliando papel con lo que la bodega realmente tenía.
 
-Automatizamos el núcleo operativo: captura en puerta, validaciones simples al registrar y tableros que hacían visibles las diferencias a tiempo.
+        Automatizamos el núcleo operativo: captura en puerta, validaciones simples al registrar y tableros que hacían visibles las diferencias a tiempo.
 
-Prioridad: confiabilidad antes que "feature nueva" — menos sorpresas para finanzas y respuestas rápidas cuando dirección preguntaba "¿dónde quedó?".`,
+        Prioridad: confiabilidad antes que "feature nueva" — menos sorpresas para finanzas y respuestas rápidas cuando dirección preguntaba "¿dónde quedó?".`,
         impact: '↓ 45% Reducción en Pérdida de Activos',
       },
       {
         slug: 'clasificador-riesgo',
-        num: '03 / 2025',
+        num: '04 / 2025',
         title: 'Clasificador de riesgo en pacientes crónicos',
         org: 'Portafolio · ML · Analítica en Salud',
         tech: 'Python · XGBoost · SHAP · scikit-learn · FastAPI · Streamlit',
         summary: 'Modelo XGBoost que estratifica pacientes crónicos (HTA, DM2, EPOC, IRC) en niveles de riesgo con explicabilidad SHAP integrada.',
         detail: `La estratificación de riesgo clínico tiene valor real cuando es explicable — no solo un número negro.
 
-El modelo procesa 12 variables clínico-administrativas (diagnóstico, edad, comorbilidades, adherencia, controles perdidos, hospitalizaciones previas, zona geográfica) y produce un score 0–100 con atribución de variables vía SHAP.
+        El modelo procesa 12 variables clínico-administrativas (diagnóstico, edad, comorbilidades, adherencia, controles perdidos, hospitalizaciones previas, zona geográfica) y produce un score 0–100 con atribución de variables vía SHAP.
 
-Construido sobre datos sintéticos clínicamente coherentes generados con Faker. Desplegado como interfaz Streamlit con endpoint de inferencia en FastAPI. Reproducible desde un solo requirements.txt.`,
+        Construido sobre datos sintéticos clínicamente coherentes generados con Faker. Desplegado como interfaz Streamlit con endpoint de inferencia en FastAPI. Reproducible desde un solo requirements.txt.`,
         impact: '87% accuracy · AUC-ROC 0.91 · 12 variables clínicas',
       },
       {
         slug: 'executive-kpi',
-        num: '04 / 2024',
+        num: '05 / 2024',
         title: 'Paquete ejecutivo de KPIs (Power BI)',
         org: 'Sehma B&B Holding · Medellín',
         tech: 'Power BI · DAX · SQL · Modelado de KPIs',
         summary: 'Drill-through ejecutivo en ocupación, margen y calidad — pensado para ritmo semanal.',
         detail: `La dirección recibía PDF mensuales muy bien maquetados… y ya viejos.
 
-Replantamos la narrativa en touchpoints semanales: un modelo semántico, definiciones consistentes de margen y ocupación, y rutas de drill que respetan límites por rol.
+        Replantamos la narrativa en touchpoints semanales: un modelo semántico, definiciones consistentes de margen y ocupación, y rutas de drill que respetan límites por rol.
 
-La victoria no fue "más gráficos", sino menos debate sobre definiciones y más tiempo decidiendo qué cambiar la próxima semana.`,
+        La victoria no fue "más gráficos", sino menos debate sobre definiciones y más tiempo decidiendo qué cambiar la próxima semana.`,
         impact: '↑ Touchpoints semanales vs PDF mensual',
       },
       {
         slug: 'etl-contracts',
-        num: '05 / 2024',
+        num: '06 / 2024',
         title: 'Endurecimiento ETL y contratos de datos',
         org: 'Freelance · Operaciones de salud',
         tech: 'Python · SQL · Checks estilo dbt · Documentación',
@@ -290,7 +314,7 @@ La victoria no fue "más gráficos", sino menos debate sobre definiciones y más
       },
       {
         slug: 'forecast-rd',
-        num: '06 / I+D',
+        num: '07 / I+D',
         title: 'Experimentos de pronóstico (Python)',
         org: 'Personal',
         tech: 'Python · pandas · statsmodels · Prophet',
@@ -304,7 +328,7 @@ La victoria no fue "más gráficos", sino menos debate sobre definiciones y más
       },
       {
         slug: 'clasificador-riesgo-pipeline',
-        num: '03 / ML',
+        num: '08 / ML',
         title: 'Pipeline Predictivo de Riesgo Cardiovascular',
         org: 'I+D Inteligencia Clínica',
         tech: 'Python · Scikit-Learn · XGBoost · FastAPI',

@@ -1,0 +1,155 @@
+{
+  "2023": {
+    "total_sales": 2013325,
+    "trend_data": [
+      {
+        "period": "Q1",
+        "volume": 491047
+      },
+      {
+        "period": "Q2",
+        "volume": 415073
+      },
+      {
+        "period": "Q3",
+        "volume": 555607
+      },
+      {
+        "period": "Q4",
+        "volume": 551598
+      }
+    ],
+    "map_data": {
+      "US-CA": 70168,
+      "US-TX": 42808,
+      "US-FL": 64648,
+      "US-NY": 37548,
+      "US-IL": 51287,
+      "US-PA": 54484
+    },
+    "top_models": [
+      {
+        "model": "Model 3",
+        "make": "TESLA",
+        "sales": 89361
+      },
+      {
+        "model": "Aveo",
+        "make": "CHEVROLET",
+        "sales": 87797
+      },
+      {
+        "model": "Travel Park",
+        "make": "FORD",
+        "sales": 86327
+      },
+      {
+        "model": "Accord",
+        "make": "HONDA",
+        "sales": 84713
+      }
+    ]
+  },
+  "2024": {
+    "total_sales": 1987142,
+    "trend_data": [
+      {
+        "period": "Q1",
+        "volume": 470373
+      },
+      {
+        "period": "Q2",
+        "volume": 599429
+      },
+      {
+        "period": "Q3",
+        "volume": 504919
+      },
+      {
+        "period": "Q4",
+        "volume": 412421
+      }
+    ],
+    "map_data": {
+      "US-CA": 17265,
+      "US-TX": 86210,
+      "US-FL": 56314,
+      "US-NY": 86218,
+      "US-IL": 13847,
+      "US-PA": 43811
+    },
+    "top_models": [
+      {
+        "model": "Model X",
+        "make": "TESLA",
+        "sales": 90301
+      },
+      {
+        "model": "Accord",
+        "make": "HONDA",
+        "sales": 89839
+      },
+      {
+        "model": "Caprice Police Vehicle",
+        "make": "CHEVROLET",
+        "sales": 86324
+      },
+      {
+        "model": "Affordable Trailers",
+        "make": "FORD",
+        "sales": 80825
+      }
+    ]
+  },
+  "2025": {
+    "total_sales": 1993444,
+    "trend_data": [
+      {
+        "period": "Q1",
+        "volume": 432336
+      },
+      {
+        "period": "Q2",
+        "volume": 536765
+      },
+      {
+        "period": "Q3",
+        "volume": 492450
+      },
+      {
+        "period": "Q4",
+        "volume": 531893
+      }
+    ],
+    "map_data": {
+      "US-CA": 57307,
+      "US-TX": 84715,
+      "US-FL": 92891,
+      "US-NY": 35089,
+      "US-IL": 62756,
+      "US-PA": 59103
+    },
+    "top_models": [
+      {
+        "model": "Camaro",
+        "make": "CHEVROLET",
+        "sales": 87722
+      },
+      {
+        "model": "Model S",
+        "make": "TESLA",
+        "sales": 85778
+      },
+      {
+        "model": "Accord",
+        "make": "HONDA",
+        "sales": 80131
+      },
+      {
+        "model": "Affordable Trailers",
+        "make": "FORD",
+        "sales": 74293
+      }
+    ]
+  }
+}

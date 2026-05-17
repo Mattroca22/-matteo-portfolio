@@ -166,7 +166,7 @@ export default function ProjectsCarousel({
                         </div>
                         <button
                           type="button"
-                          className="project-card__cta btn btn-primary"
+                          className="project-card__cta btn btn-outline"
                           onClick={() => setPubSlug(CHART_SLUG)}
                         >
                           {publicationOpen}
